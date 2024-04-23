@@ -63,9 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = WelcomePage();
         break;
       case 1:
+        page = GeneratorPage();
+        break;
+      case 2:
         page = FavoritesPage();
         break;
       default:
@@ -82,7 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 destinations: [
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
-                    label: Text('Home'),
+                    label: Text('Home')
+                    ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.api),
+                    label: Text('API'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.favorite),
@@ -207,5 +214,21 @@ class FavoritesPage extends StatelessWidget {
           ),
       ],
     );
+  }
+}
+
+class WelcomePage extends StatelessWidget{
+  const WelcomePage({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body:Center(
+        child: Text(
+          'Hello World!',
+          style:Theme.of(context).textTheme.displayMedium
+        ),
+      ),
+    );   
   }
 }
