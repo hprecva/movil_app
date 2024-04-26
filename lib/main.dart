@@ -1,6 +1,9 @@
+// ignore_for_file: dead_code
+
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'Movies App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey.shade300),
         ),
         home: MyHomePage(),
       ),
@@ -71,6 +74,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 2:
         page = FavoritesPage();
         break;
+      case 3:
+        page = APIExample();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -94,6 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(Icons.favorite),
                     label: Text('Favorites'),
+                  ),
+                  NavigationRailDestination(
+                      icon: Icon(Icons.api_rounded),
+                      label: Text('APIExample')
                   ),
                 ],
                 selectedIndex: selectedIndex,
@@ -122,6 +132,7 @@ class GeneratorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     var pair = appState.current;
+
 
     IconData icon;
     if (appState.favorites.contains(pair)) {
@@ -230,5 +241,21 @@ class WelcomePage extends StatelessWidget{
         ),
       ),
     );   
+  }
+}
+
+class APIExample extends StatelessWidget{
+  const APIExample({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Http request',
+          style:Theme.of(context).textTheme.displayMedium
+        ),
+      ),
+    );
   }
 }

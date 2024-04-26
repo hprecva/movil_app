@@ -1,4 +1,4 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.updateBuildConfiguration": "automatic",
     "cmake.sourceDirectory": "C:/Users/hecto/Documents/LDSW/6.-SEMESTRE/DISEÑO DE APLICACIONES MÓVILES/3.4 Utilización de widgets/movies_app/windows/flutter"
 }
