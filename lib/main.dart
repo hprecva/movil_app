@@ -3,10 +3,16 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+
+Future<void> main() async { 
+  
   runApp(MyApp());
+  await Firebase.initializeApp(
+  options : DefaultFirebaseOptions.currentPlatform,
+);
 }
 
 class MyApp extends StatelessWidget {
@@ -250,7 +256,7 @@ class APIExample extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Center(
+      body:Center(
         child: Text(
           'Http request',
           style:Theme.of(context).textTheme.displayMedium
@@ -258,4 +264,6 @@ class APIExample extends StatelessWidget{
       ),
     );
   }
+
 }
+
